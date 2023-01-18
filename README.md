@@ -1,4 +1,4 @@
-# -Schotastic-Shocks-in-the-New-Keynesian-Model
+# -MATLAB-Schotastic-Shocks-in-the-New-Keynesian-Model
 
 ## Technical Skills - MATLAB (Dynare Library)
 
