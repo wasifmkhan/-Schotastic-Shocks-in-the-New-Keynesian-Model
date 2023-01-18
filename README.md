@@ -26,31 +26,54 @@ stochastic shock and how aggressively the government reacts to changes in macro 
 Appendix: Code used for model Simulations: 
 
 %Block 1
+
 var x pi i u Ex Epi; 
+
 varexo epsilon;
+
 parameters beta kappa sigma rhou phipi phix;
+
 %Block 2 
+
 %Values changed in this block for part (c) and 
 (d)% beta=0.99;
+
 kappa=0.3;
+
 sigma=1;
+
 rhou=0.9;
+
 phipi=1.5;
+
 phix=0.5;
+
 %Block 3
-model(linear)
+
+model(linear);
 
 Ex = x(+1);
+
 Epi = pi(+1);
+
 x = Ex - (1/sigma)*(i-Epi)+u;
+
 %x = Ex - (1/sigma)*(i-Epi);->without demand shock%
+
 pi = beta*Epi + kappa*x;
+
 %pi = beta*Epi + kappa*x+u;-> with inflation shock%
+
 i = phipi*pi + phix*x;
+
 %i = phipi*pi + phix*x+u;-> Rule 1 with shock%
+
 %i = phipi*Epi; -> Rule 3%
+
 %i = phipi*Epi+u; -> Rule 3 with shock%
+
 u = rhou*u(-1) + epsilon;
+
 end;
 shocks;
 var epsilon;
@@ -58,3 +81,4 @@ stderr 1;
 end;
 steady;
 stoch_simul;
+
